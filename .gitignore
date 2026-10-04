@@ -1,0 +1,27 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
+# Personal or sensitive data
+data/private/
+data/raw/
+exports/
+
+# Build and dependency directories
+node_modules/
+dist/
+build/
+target/
+out/
+
+# Runtime, editor, and operating-system files
+*.log
+coverage/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
