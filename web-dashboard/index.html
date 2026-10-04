@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ElderCare Monitoring System</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="top">
+    <div class="brand">ElderCare Monitoring</div>
+    <nav class="tabs">
+      <a href="#/dashboard" id="tab-d">Dashboard</a>
+      <a href="#/alerts"    id="tab-a">Alerts</a>
+      <a href="#/reports"   id="tab-r">Reports</a>
+    </nav>
+    <div class="user">
+      <span id="nav-email"></span>
+      <button id="btn-logout" class="btn">Logout</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- AUTH -->
+    <section id="view-auth" class="card" style="display:none">
+      <h2>Portfolio demonstration</h2>
+      <p>Enter a demonstration email to open the monitoring dashboard. This browser-only session is not production authentication.</p>
+      <form id="auth-form">
+        <label for="auth-email">Demo email</label>
+        <input id="auth-email" type="email" placeholder="you@example.com" required />
+        <button type="submit" class="btn">Open dashboard</button>
+      </form>
+      <p class="hint">Use synthetic data only. This prototype is not a medical device and must not support clinical decisions.</p>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="view-dash" style="display:none">
+      <div class="cards">
+        <div id="card-hr"   class="card metric"><div class="title">Heart Rate</div><div class="value">-- bpm</div><div class="sub">60–120 bpm</div></div>
+        <div id="card-spo2" class="card metric"><div class="title">SpO₂</div><div class="value">-- %</div><div class="sub">≥ 92 %</div></div>
+        <div id="card-temp" class="card metric"><div class="title">Temperature</div><div class="value">-- °C</div><div class="sub">36–38 °C</div></div>
+        <div id="card-fall" class="card metric"><div class="title">Fall</div><div class="value">No</div><div class="sub">No fall should be detected</div></div>
+      </div>
+
+      <div class="card">
+        <div class="controls">
+          <button id="btn-pause"  class="btn">❚❚ Pause Chart</button>
+          <button id="btn-resume" class="btn">▶ Resume Chart</button>
+          <button id="btn-start"  class="btn">▶ Start Simulation</button>
+          <button id="btn-stop"   class="btn" disabled>■ Stop</button>
+          <label>Interval (s): <input id="interval" type="number" min="1" value="2" /></label>
+          <label><input id="toggle-alerts" type="checkbox" checked /> Enable alerts</label>
+        </div>
+        <div class="chartbox"><canvas id="trend" height="260"></canvas></div>
+      </div>
+    </section>
+
+    <!-- ALERTS -->
+    <section id="view-alerts" style="display:none">
+      <div class="card">
+        <div class="row">
+          <button class="btn" onclick="location.reload()">Refresh</button>
+          <button id="btn-export-alerts" class="btn">⬇ Export alerts.csv</button>
+        </div>
+        <ul id="alert-list" class="alert-list"></ul>
+      </div>
+    </section>
+
+    <!-- REPORTS -->
+    <section id="view-reports" style="display:none">
+      <div class="grid">
+        <div class="card">
+          <h3>Data exports</h3>
+          <p>Download recent data for analysis or your appendix.</p>
+          <button id="btn-export-readings" class="btn">⬇ readings.csv</button>
+          <button id="btn-export-alerts-2" class="btn">⬇ alerts.csv</button>
+        </div>
+        <div class="card"><h3>System info</h3><pre id="version-json" class="pre"></pre></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,26 +1,30 @@
-# Local configuration and secrets
+# Secrets and local configuration
 .env
 .env.*
 !.env.example
 *.key
 *.pem
-secrets/
 
-# Personal or sensitive data
-data/private/
-data/raw/
-exports/
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
 
-# Build and dependency directories
+# JavaScript
 node_modules/
 dist/
 build/
-target/
-out/
 
-# Runtime, editor, and operating-system files
-*.log
+# Local data and reports
+*.db
+*.sqlite
+*.sqlite3
+exports/
 coverage/
+
+# Editors and operating systems
 .vscode/
 .idea/
 .DS_Store
